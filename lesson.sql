@@ -59,15 +59,14 @@ department_idカラムが1であるname、email、ageカラムを、
 created_atが昇順になるように取得。
 
 -- Q7
-select name, age, gender from people
+select name from people
 where (gender = 2 and age between 20 and 29) or (gender = 1 and age between 40 and 49);
 
 -- Q8
-select p.name, d.name, age from people p
-join departments d using(department_id) where department_id = 1 order by age;
+select name from people where department_id = 1;
 
 -- Q9
-select gender, avg(age) as average_age from people
+select avg(age) as average_age from people
 where gender = 2 and department_id = 2 group by gender;
 
 -- Q10
@@ -76,5 +75,5 @@ inner join departments d on p.department_id = d.department_id
 inner join reports r on p.person_id = r.person_id;
 
 -- Q11
-select p.name, r.content from people p
+select p.name from people p
 left outer join reports r using(person_id) where r.content is null;
